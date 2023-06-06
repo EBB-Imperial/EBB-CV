@@ -31,10 +31,8 @@ map_piece = rotate_image(map_piece, angle)
 
 true_map = combine.update_map(true_map, 10, 10, map_piece)
 
-
-
 cv2.imshow('map_piece', map_piece)
-cv2.imshow('True', true_map)
+cv2.imshow('Overall Map', true_map)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
