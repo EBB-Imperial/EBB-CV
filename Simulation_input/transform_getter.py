@@ -63,4 +63,15 @@ if __name__ == "__main__":
     # change the path to the file you want to load
     transform_getter = TransformGetter('Simulation_input/2023.6.9_15.14/TransformRecord.txt')
     # simply query the transform for a given date (which is the same as the date in image name)
-    print(transform_getter.get_transform("09.06.2023_14-51-11"))
+    #print(transform_getter.get_transform("09.06.2023_14-51-11"))
+    new_record = transform_getter.get_transform("09.06.2023_14-51-11")
+    # get position: x, y and z
+    x, _, y = new_record.position
+    print("x and y: ", x, y)
+    _, rotation, _ = new_record.rotation
+    print("rotation: ", rotation)
+
+def get_obj():
+    transform_getter = TransformGetter('Simulation_input/2023.6.9_15.14/TransformRecord.txt')
+    return transform_getter
+

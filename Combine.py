@@ -21,11 +21,11 @@ def create_maze_image(width, height):
 def update_map(map_image, x, y, map_piece):
     # Get the dimensions of the piece of map
     piece_height, piece_width = map_piece.shape[:2]
-    print (piece_height, piece_width) 
+    
     # Iterate over the pixels in the map piece
     for i in range(piece_height):
         for j in range(piece_width):
-            print (map_piece[i, j])
+            
             if (map_piece[i, j] == 255 and map_image[y+i, x+j] >= 30):
                 map_image[y+i, x+j] -= 30
 

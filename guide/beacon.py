@@ -1,4 +1,3 @@
-import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -77,8 +76,7 @@ def plot(width, height, list):
     # Display the plot
     plt.show()
 
-# list = find_pos(120, 45, 100, 50, 0.01)
-# plot(100, 50, list)
 
+# input : angle1 (between beacon 1 and beacon 2), angle2 (between beacon2 and beacon3), width, height
 solution = find_pos_1(150, 80, 10, 10)
 plot(10, 10, solution)

@@ -30,7 +30,7 @@ def img_transform(img_src):
 
     result1 = make_threshold(img, new_width, new_height)
     original_points = np.float32([[0, 0], [new_width, 0], [0, new_height], [new_width, new_height]])
-    transformed_points = np.float32([[0, 0], [new_width, 0], [-new_width, 1.5* new_height], [2*new_width, 1.5 * new_height]])
+    transformed_points = np.float32([[0, 0], [new_width, 0], [-5*new_width, 1.5* new_height], [6.2*new_width, 1.5 * new_height]])
     matrix = cv2.getPerspectiveTransform(transformed_points, original_points)
     result2 = cv2.warpPerspective(result1, matrix, (new_width, new_height))
 
@@ -65,9 +65,8 @@ def make_threshold(img, new_width, new_height):
 # matrix = cv2.getPerspectiveTransform(transformed_points, original_points)
 # result2 = cv2.warpPerspective(result1, matrix, (new_width, new_height))
 
-
 if (0):
-    result1, result2 = img_transform("img/light_maze1.png")
+    result1, result2 = img_transform("Simulation_input/2023.6.9_15.14/SampleScene_1080p_09.06.2023_14-51-11.jpg")
     # Display the image
     cv2.imshow('Result', result1)
     cv2.imshow('Result2', result2)
