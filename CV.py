@@ -5,6 +5,7 @@ import shutil
 from rotation import rotate_image
 from transform_getter import TransformGetter
 from perspective import ipm
+from perspectivetest import perspective_transform
 from combine_images import combine_images  # Import the function for combining images
 
 def crop_to_nontransparent(img):
@@ -92,7 +93,7 @@ while True:
             img_rgba = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
 
             # Apply perspective transform
-            img_transformed = ipm(img_rgba, FOV, height, angle)
+            img_transformed = perspective_transform(img_rgba)
 
             # Save the transformed image
             cv2.imwrite(os.path.join(perspective_dir, filename.replace('.jpg', '.png')), img_transformed)

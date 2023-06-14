@@ -39,19 +39,19 @@ def ipm(image, camera_height, fov, camera_angle, output_resolution):
 
     return output_image
 
-# Example usage
-image = cv2.imread("/home/yi/Documents/EBB-CV/SimData_2023-6-13/SampleScene_1080p_13.06.2023_20-01-12.jpg")
+    # Example usage
+    image = cv2.imread("/home/yi/Documents/EBB-CV/SimData_2023-6-13/SampleScene_1080p_13.06.2023_20-01-12.jpg")
 
-# Set the camera parameters
-camera_height = 5.0  # meters
-fov = 60.0  # degrees
-camera_angle = 30.0  # degrees
-output_resolution = (800, 600)
+    # Set the camera parameters
+    camera_height = 5.0  # meters
+    fov = 60.0  # degrees
+    camera_angle = 30.0  # degrees
+    output_resolution = (800, 600)
 
-# Perform IPM
-result = ipm(image, camera_height, fov, camera_angle, output_resolution)
+    # Perform IPM
+    result = ipm(image, camera_height, fov, camera_angle, output_resolution)
 
-# Display the result
-cv2.imshow("IPM Result", result)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    # Display the result
+    cv2.imshow("IPM Result", result)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
