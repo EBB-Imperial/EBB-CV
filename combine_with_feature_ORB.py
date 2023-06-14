@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 import os
 
-folder_path = "Picture" # The folder with the images
+folder_path = "Simulation_input/2023.6.9_15.14" # The folder with the images
 images_list = [f for f in os.listdir(folder_path) if f.endswith('.png')] # Only load .png files
 print(f"Total number of images detected {len(images_list)}") # Print the number of images detected
 
 max_x = 0 # These are the maximum x coordinates of the images
-max_y = 0 # These are the maximum y coordinates of the images
+max_y = 0 
 
 maze_size = (max_y, max_x)  # The size of the maze (height, width)
 full_map = np.zeros((maze_size[0], maze_size[1], 3), dtype=np.uint8)  # RGB map
