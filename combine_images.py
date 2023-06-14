@@ -9,31 +9,27 @@ def combine_images(img1, img2):
     # Initialize ORB detector
     orb = cv2.ORB_create()
 
-    # Initialize BFMatcher
-    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
-
-    # Compute keypoints and descriptors
+    # Find keypoints and descriptors
     kp1, des1 = orb.detectAndCompute(img1_gray, None)
     kp2, des2 = orb.detectAndCompute(img2_gray, None)
+
+    # Create BFMatcher object
+    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 
     # Match descriptors
     matches = bf.match(des1, des2)
 
-    # Sort matches by distance
+    # Sort them in the order of their distance
     matches = sorted(matches, key=lambda x: x.distance)
 
     # Extract location of good matches
     src_pts = np.float32([kp1[m.queryIdx].pt for m in matches]).reshape(-1, 1, 2)
     dst_pts = np.float32([kp2[m.trainIdx].pt for m in matches]).reshape(-1, 1, 2)
 
-    # Compute homography
     H, _ = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
 
-    # Warp the image to match the combined image
-    height, width = img1.shape[:2]
-    img2_warped = cv2.warpPerspective(img2, H, (width, height))
+    height, width = img2.shape[:2]
 
-    # Combine the warped image with the combined image
-    combined_image = cv2.add(img1, img2_warped)
+    img1_warped = cv2.warpPerspective(img1, H, (width, height))
 
-    return combined_image
+    return img1_warped
