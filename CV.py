@@ -4,9 +4,8 @@ import os
 import shutil
 from rotation import rotate_image
 from transform_getter import TransformGetter
-from perspective import ipm
-from perspectivetest import perspective_transform
-from combine_images import combine_images  # Import the function for combining images
+from perspective import perspective_transform
+from combine_images import image_stitching # Import the function for combining images
 
 def crop_to_nontransparent(img):
     # Find the bounding box of the non-transparent region
@@ -71,15 +70,6 @@ if __name__ == '__main__':
     combined_image = first_image
     processed_images.add(first_image_filename)
 
-    # Define FOV
-    FOV = 70
-
-    # Define height of the robot
-    height = 3.69
-
-    # Define angle of the camera
-    angle = 53.7
-
     # Loop over the sorted list of filenames
     while True:
         
@@ -114,7 +104,7 @@ if __name__ == '__main__':
                 cv2.imwrite(os.path.join(rotated_dir, filename.replace('.jpg', '.png')), img_cropped)
 
                 # Combine the cropped image with the combined image
-                combined_image = combine_images(combined_image, img_cropped)
+                combined_image = image_stitching(combined_image, img_cropped)
 
                 # Save the combined image
                 combined_image_filename = 'existing_map_' + str(len(processed_images) + 1) + '.png'
