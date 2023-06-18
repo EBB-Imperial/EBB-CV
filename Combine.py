@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
-
+import math
 
 def single_color_image(width, height, color):
     # Create a blank black image
-    map_image = np.zeros((height, width), dtype=np.uint8)
+    map_image = np.zeros((int(height), int(width)), dtype=np.uint8)
     map_image[map_image == 0] = color
     return map_image
 
@@ -19,15 +19,19 @@ def create_maze_image(width, height):
     return maze_image
 
 def update_map(map_image, x, y, map_piece):
+
+    x = math.ceil(x - map_piece.shape[1] / 2)
+    y = math.ceil(y - map_piece.shape[0] / 2)
+
     # Get the dimensions of the piece of map
     piece_height, piece_width = map_piece.shape[:2]
     
     # Iterate over the pixels in the map piece
-    for i in range(piece_height):
-        for j in range(piece_width):
+    for i in range(piece_height - 1):
+        for j in range(piece_width - 1):
             
-            if (map_piece[i, j] == 255 and map_image[y+i, x+j] >= 30):
-                map_image[y+i, x+j] -= 30
+            if (map_piece[i, j] == 255):
+                map_image[y+i, x+j] = 255
 
     return map_image
 
