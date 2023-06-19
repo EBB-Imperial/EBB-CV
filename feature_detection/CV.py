@@ -21,19 +21,19 @@ def crop_to_nontransparent(img):
 if __name__ == '__main__':
     
     # Load the transform data
-    transform_getter = TransformGetter('SimData_2023-6-13/EEB_Transform.txt')
+    transform_getter = TransformGetter('feature_detection/SimData_6-19/EEB_Transform.txt')
 
     # Directory containing the images
-    image_dir = '/home/yi/Documents/EBB-CV/SimData_2023-6-13'
+    image_dir = 'feature_detection/SimData_6-19'
 
     # Directory to save the rotated images
-    rotated_dir = 'rotated_images'
+    rotated_dir = 'feature_detection/rotated_images'
 
     # Directory to save the erspective Transform images
-    perspective_dir = 'perspective_images'
+    perspective_dir = 'feature_detection/perspective_images'
 
     # Directory to save the combined images
-    combined_dir = 'existing_map'
+    combined_dir = 'feature_detection/existing_map'
 
     # Delete the rotated images directory if it exists
     if os.path.exists(rotated_dir):
