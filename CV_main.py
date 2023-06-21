@@ -27,6 +27,22 @@ def main():
 
     map_output_path = "map_output"
 
+    # if no map_output folder, create one
+    if not os.path.exists(map_output_path):
+        os.mkdir(map_output_path)
+
+    # if no rotation_pics folder, create one
+    if not os.path.exists(rotation_pic_folder):
+        os.mkdir(rotation_pic_folder)
+
+    # if no perspective_transform_pics folder, create one
+    if not os.path.exists(perspective_transform_pic_folder):
+        os.mkdir(perspective_transform_pic_folder)
+
+    # if no threshold_pics folder, create one
+    if not os.path.exists(threshold_transform_pic_folder):
+        os.mkdir(threshold_transform_pic_folder)
+
     # clear the map_output folder
     for filename in os.listdir(map_output_path):
         os.remove(map_output_path + "/" + filename)
