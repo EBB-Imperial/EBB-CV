@@ -30,8 +30,11 @@ def update_map(map_image, x, y, map_piece):
     for i in range(piece_height - 1):
         for j in range(piece_width - 1):
             
-            if (map_piece[i, j] == 255):
+            if map_piece[i, j] >= 100:
                 map_image[y+i, x+j] = 255
+            
+            elif map_piece[i, j] < 30 and map_image[y+i, x+j] < 100:
+                map_image[y+i, x+j] = 0
 
     return map_image
 
